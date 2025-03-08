@@ -4,7 +4,7 @@ import React from 'react'
 function page() {
   return (
     <div>
-      <Button>Hello</Button>
+      <Button className={'text-2xl'}>Hello</Button>
     </div>
   )
 }

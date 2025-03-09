@@ -1,4 +1,4 @@
-import { connectDB } from "@/dbConfig/dbConfig";
+import connectDB from "@/dbConfig/dbConfig";
 import doctorModel from "@/models/doctorModel";
 import bcryptjs from 'bcryptjs';
 import { NextRequest, NextResponse } from "next/server";
@@ -7,13 +7,12 @@ import { NextRequest, NextResponse } from "next/server";
 connectDB();
 
 
-export async function post(request) {
+export async function POST(request) {
   try {
     const reqBody = await request.json();
     const { name, age, mobile, email, degree, experience, location, password } = reqBody;
 
     console.log(reqBody);
-
 
     const existingDoctor = await doctorModel.findOne({ email });
 

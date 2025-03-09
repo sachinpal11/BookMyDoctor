@@ -14,7 +14,7 @@ function Signup() {
         <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} placeholder={'Enter Doctor Degree'} />
         <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} placeholder={'Enter Clinic Location'} />
         <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} placeholder={'Set Password'} />
-        <Button variant={"register"} size={"lg"} >Login</Button>
+        <Button variant={"register"} size={"lg"} >Sign Up</Button>
 
       </form>
     </div>

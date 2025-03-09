@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Input } from '../ui/input'
+import { Button } from '../ui/button'
 
 function Login() {
   return (
@@ -10,6 +11,7 @@ function Login() {
       <form action="" className='w-[90%] flex flex-col gap-4'>
         <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} placeholder={'Enter Email ID'} />
         <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} placeholder={'Enter Password'} />
+        <Button size={"lg"}>Login</Button>
       </form>
     </div>
   )

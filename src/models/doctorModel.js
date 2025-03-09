@@ -7,7 +7,7 @@ const doctorSchema = new mongoose.Schema({
     trim: true
   },
   age: {
-    type: number,
+    type: Number,
     required: true,
   },
   email: {

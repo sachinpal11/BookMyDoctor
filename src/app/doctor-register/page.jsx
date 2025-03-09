@@ -1,9 +1,9 @@
 "use client";
 
 import { Button } from '@/components/ui/button';
-import Login from '@/components/login/Login';
+
 import React, { useState } from 'react'
-import Signup from '@/components/Signup/Signup';
+
 import Link from 'next/link';
 
 function page() {

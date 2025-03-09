@@ -13,7 +13,7 @@ function page() {
 
   const [loading, setloading] = useState(false);
   const [disabled, setDisabled] = useState(true);
-
+  const [success, setSuccess] = useState(false);
   const handleSignUp = async (e) => {
     e.preventDefault();
 
@@ -22,7 +22,7 @@ function page() {
         setloading(true);
         const response = await axios.post("/api/doctor/doctorsignup", signUpDetails);
         console.log("signup success", response.data);
-
+        setSuccess(true);
       } catch (err) {
         console.log("error", err);
         toast.error("Something went wrong");
@@ -48,7 +48,7 @@ function page() {
       <div className='w-screen overflow-x-hidden items-center flex flex-col gap-4'>
         <h1 className='text-3xl w-[90%] text-start font-semibold'>Signup</h1>
         {loading && <Loading />}
-        {<RegisterSuccess />}
+        {success && <RegisterSuccess />}
         <form action="" onSubmit={handleSignUp} className='w-[90%] flex flex-col gap-4'>
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, name: e.target.value })} placeholder={'Enter Name'} />
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, age: e.target.value })} placeholder={'Enter Age'} />

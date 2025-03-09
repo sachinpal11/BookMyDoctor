@@ -10,9 +10,8 @@ connectDB();
 export async function POST(request) {
   try {
     const reqBody = await request.json();
+    console.log("Received Data:", reqBody);
     const { name, age, mobile, email, degree, experience, location, password } = reqBody;
-
-    console.log(reqBody);
 
     const existingDoctor = await doctorModel.findOne({ email });
 
@@ -26,11 +25,11 @@ export async function POST(request) {
 
     const newDoctor = new doctorModel({
       name,
-      age,
+      age: parseInt(age),
       mobile,
       email,
       degree,
-      experience,
+      experience: parseInt(experience),
       location,
       password: hashedPassword
     });
@@ -42,6 +41,7 @@ export async function POST(request) {
     return NextResponse.json({ message: "Doctor registered successfully", success: true, savedDoctor }, { status: 201 });
 
   } catch (error) {
+    console.log("signup catch error", error);
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 }

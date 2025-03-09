@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Loading from '@/components/ui/Loading';
+import RegisterSuccess from '@/components/ui/RegisterSuccess';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
@@ -16,16 +17,18 @@ function page() {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    try {
-      setloading(true);
-      const response = await axios.post("/api/doctor/doctorsignup", signUpDetails);
-      console.log("signup success", response.data);
+    if (!disabled) {
+      try {
+        setloading(true);
+        const response = await axios.post("/api/doctor/doctorsignup", signUpDetails);
+        console.log("signup success", response.data);
 
-    } catch (err) {
-      console.log("error", err);
-      toast.error("Something went wrong");
-    } finally {
-      setloading(false);
+      } catch (err) {
+        console.log("error", err);
+        toast.error("Something went wrong");
+      } finally {
+        setloading(false);
+      }
     }
 
   }
@@ -45,6 +48,7 @@ function page() {
       <div className='w-screen overflow-x-hidden items-center flex flex-col gap-4'>
         <h1 className='text-3xl w-[90%] text-start font-semibold'>Signup</h1>
         {loading && <Loading />}
+        {<RegisterSuccess />}
         <form action="" onSubmit={handleSignUp} className='w-[90%] flex flex-col gap-4'>
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, name: e.target.value })} placeholder={'Enter Name'} />
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, age: e.target.value })} placeholder={'Enter Age'} />
@@ -53,7 +57,7 @@ function page() {
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, degree: e.target.value })} placeholder={'Enter Doctor Degree'} />
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, experience: e.target.value })} placeholder={'Enter Doctor Experience'} />
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, location: e.target.value })} placeholder={'Enter Clinic Location'} />
-          <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, password: e.target.value })} placeholder={'Set Password'} />
+          <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, password: e.target.value })} placeholder={'Set Password'} type="password" />
           <Button variant={"register"} size={"lg"} type={"submit"} >{disabled ? "Fill All Details" : "Sign Up"}</Button>
         </form>
       </div>

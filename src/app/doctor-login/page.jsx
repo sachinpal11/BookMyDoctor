@@ -21,7 +21,7 @@ function page() {
 
     if (!disabled) {
       setloading(true);
-      const response = await axios.post(`/api/doctor/doctorlogin`, loginDetails);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/doctor/doctorlogin`, loginDetails);
       console.log("login success", response.data);
       router.push("/profile");
 

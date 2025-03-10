@@ -26,7 +26,7 @@ function page() {
     if (!disabled) {
       try {
         setloading(true);
-        const response = await axios.post(`/api/doctor/doctorsignup`, signUpDetails);
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/doctor/doctorsignup`, signUpDetails);
         console.log("signup success", response.data);
         setSuccess(true);
       } catch (err) {

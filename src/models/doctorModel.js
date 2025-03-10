@@ -41,13 +41,14 @@ const doctorSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  image: {
+    type: String,
+    required: true
+  }
+  ,
   createdAt: {
     type: Date,
     default: Date.now
-  },
-  isVerified: {
-    type: Boolean,
-    default: false
   }
 });
 

@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import React from 'react'
 import Logo from '@/assets/BookMyDoctor-logo.png';
 import Image from 'next/image';
+import Link from 'next/link';
 function page() {
   return (
     <div className='w-screen h-screen flex-col gap-10 flex justify-center items-center'>
@@ -10,8 +11,8 @@ function page() {
         <h1 className='text-5xl font-semibold text-center'>Book My <br /> Doctor</h1>
       </div>
       <div className='w-full flex flex-col gap-2 items-center'>
-        <Button className={'w-[90%]'} variant={"register"} size={"lg"}>Register As Doctor</Button>
-        <Button className={'w-[90%]'} size={"lg"}>Search Doctors</Button>
+        <Link href={'/doctor-register'} className='py-3 px-5 text-center text-xl text-white rounded-md w-[90%] bg-blue-700' >Register As Doctor</Link>
+        <Link href={'/search-doctor'} className='py-3 px-5 text-center text-xl text-white rounded-md w-[90%] bg-black' >Search Doctors</Link>
       </div>
     </div>
   )

@@ -5,13 +5,12 @@ import { NextResponse } from "next/server";
 connectDB();
 
 export async function POST(request) {
-  console.log("1");
+
   try {
-    console.log("2");
     const reqBody = await request.json();
 
     const { doctorName } = reqBody;
-    console.log("3");
+
 
     console.log(reqBody);
     if (!reqBody) {

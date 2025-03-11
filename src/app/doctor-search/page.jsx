@@ -16,7 +16,7 @@ function Page() {
   }, [searchParams]);
 
   useEffect(() => {
-    if (!name || name === 'Guest') return; // Prevent unnecessary API calls
+    if (!name || name === 'Guest') return;
 
     const fetchDoctors = async () => {
       try {
@@ -30,9 +30,9 @@ function Page() {
     };
 
     fetchDoctors();
-    const interval = setInterval(fetchDoctors, 5000); // Fetch every 5 seconds
+    const interval = setInterval(fetchDoctors, 5000);
 
-    return () => clearInterval(interval); // Cleanup interval when component unmounts
+    return () => clearInterval(interval);
   }, [name]);
 
   return (

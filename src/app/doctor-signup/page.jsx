@@ -26,11 +26,12 @@ function page() {
     if (!disabled) {
       try {
         setloading(true);
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/doctor/doctorsignup`, signUpDetails);
+        const response = await axios.post(`/api/doctor/doctor-signup`, signUpDetails);
         console.log("signup success", response.data);
         setSuccess(true);
       } catch (err) {
         console.log("error", err);
+        setloading(false);
         toast.error("Something went wrong");
       } finally {
         setloading(false);
@@ -55,7 +56,7 @@ function page() {
       <div className='w-screen overflow-x-hidden items-center flex flex-col gap-4'>
         <h1 className='text-3xl w-[90%] text-start font-semibold'>Signup</h1>
         {loading && <Loading />}
-        {success && <RegisterSuccess />}
+        {success && <RegisterSuccess value={"register"} />}
         <form action="" onSubmit={handleSignUp} className='w-[90%] flex flex-col gap-4'>
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, name: e.target.value })} placeholder={'Enter Name'} />
           <CldUploadWidget uploadPreset='book-my-doctor-api-sachin' onSuccess={({ event, info }) => {

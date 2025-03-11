@@ -18,7 +18,7 @@ function page() {
     try {
       console.log(searchRef.current.value);
       const response = await axios.post(`/api/doctor/search`, { doctorName: searchRef.current.value });
-      console.log("searching success", response.data);
+      console.log("searching success", response.data.doctors);
     } catch (error) {
       console.log("error searching:", error);
     }

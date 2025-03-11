@@ -15,7 +15,7 @@ export async function POST(request) {
       return NextResponse.json({ error: "Search value is required" }, { status: 400 });
     }
 
-    const doctors = await doctorModel.find({ name: doctorName });
+    const doctors = await doctorModel.find({ firstName: doctorName });
     return NextResponse.json({ success: true, doctors }, { status: 200 });
 
 

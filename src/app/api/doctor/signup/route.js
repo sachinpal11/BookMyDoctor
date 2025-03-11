@@ -13,11 +13,9 @@ export async function POST(request) {
   try {
     const reqBody = await request.json();
     console.log("Received Data:", reqBody);
-    const { name, age, mobile, email, degree, experience, location, password, image } = reqBody;
+    const { firstName, lastName, age, mobile, email, degree, experience, location, password, image } = reqBody;
 
     const existingDoctor = await doctorModel.findOne({ email });
-
-
 
     if (existingDoctor) {
       return NextResponse.json({ error: "Email is already registered" }, { status: 400 });
@@ -28,7 +26,8 @@ export async function POST(request) {
     const hashedPassword = await bcryptjs.hash(password, salt);
 
     const newDoctor = new doctorModel({
-      name,
+      firstName,
+      lastName,
       age: parseInt(age),
       mobile,
       email,

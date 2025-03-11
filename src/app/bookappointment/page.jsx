@@ -17,6 +17,7 @@ function page() {
   const handleSearchForm = async (e) => {
     e.preventDefault();
     if (!disable) {
+      const name = searchRef.current.value;
       router.push(`/doctor-search?name=${searchRef.current.value}`);
     }
   }

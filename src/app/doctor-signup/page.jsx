@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
 function page() {
-  const [signUpDetails, setSignUpDetails] = useState({ name: '', age: '', mobile: '', email: '', degree: '', experience: '', location: '', password: '', image: '' });
+  const [signUpDetails, setSignUpDetails] = useState({ firstName: '', lastName: '', age: '', mobile: '', email: '', degree: '', experience: '', location: '', password: '', image: '' });
 
   const [loading, setloading] = useState(false);
   const [disabled, setDisabled] = useState(true);
@@ -22,7 +22,7 @@ function page() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
+    console.log("signup details", signUpDetails);
     if (!disabled) {
       try {
         setloading(true);
@@ -42,7 +42,7 @@ function page() {
 
 
   useEffect(() => {
-    if (signUpDetails.email.length > 0 && signUpDetails.password.length > 0 && signUpDetails.name.length > 0 && signUpDetails.age.length > 0 && signUpDetails.mobile.length > 0 && signUpDetails.degree.length > 0 && signUpDetails.experience.length > 0 && signUpDetails.location.length > 0) {
+    if (signUpDetails.email.length > 0 && signUpDetails.password.length > 0 && signUpDetails.firstName.length > 0 && signUpDetails.age.length > 0 && signUpDetails.mobile.length > 0 && signUpDetails.degree.length > 0 && signUpDetails.experience.length > 0 && signUpDetails.location.length > 0) {
       setDisabled(false);
     }
     else {
@@ -50,6 +50,15 @@ function page() {
     }
   }, [signUpDetails]);
 
+
+  const handleName = (e) => {
+    const name = e.target.value.split(' ');
+    if (name.length > 1) {
+      setSignUpDetails({ ...signUpDetails, firstName: name[0], lastName: name[1] });
+    } else {
+      setSignUpDetails({ ...signUpDetails, firstName: name[0] });
+    }
+  }
   return (
     <div className='w-screen relative overflow-hidden h-screen flex justify-center items-center'>
       <div className='w-screen sm:w-[60%] md:w-[40%] overflow-x-hidden items-center flex flex-col gap-4'>
@@ -57,7 +66,7 @@ function page() {
         {loading && <Loading />}
         {success && <RegisterSuccess value={"register"} />}
         <form action="" onSubmit={handleSignUp} className='w-[90%] flex flex-col gap-4'>
-          <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, name: e.target.value })} placeholder={'Enter Name'} />
+          <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => handleName(e)} placeholder={'Enter Name'} />
           <CldUploadWidget uploadPreset='book-my-doctor-api-sachin' onSuccess={({ event, info }) => {
             if (event === 'success') {
               console.log(info.secure_url);

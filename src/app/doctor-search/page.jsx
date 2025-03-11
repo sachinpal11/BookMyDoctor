@@ -21,8 +21,9 @@ function DoctorSearchComponent() {
     if (!name || name === "Guest") return;
 
     const fetchDoctors = async () => {
+      const doctorname = name.split(' ');
       try {
-        const response = await axios.post(`/api/doctor/search`, { doctorName: name });
+        const response = await axios.post(`/api/doctor/search`, { doctorName: doctorname[0] });
         setLoading(false);
         setDoctorData(response.data.doctors);
       } catch (error) {
@@ -45,7 +46,8 @@ function DoctorSearchComponent() {
           doctorData.map((doctor, index) => (
             <DoctorSearchCard
               key={index}
-              name={doctor.name}
+              firstName={doctor.firstName}
+              lastName={doctor.lastName}
               image={doctor.image}
               degree={doctor.degree}
               location={doctor.location}

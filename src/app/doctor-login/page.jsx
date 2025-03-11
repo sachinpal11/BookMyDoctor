@@ -21,11 +21,11 @@ function page() {
     e.preventDefault();
 
     if (!disabled) {
-      setloading(true);
-      const response = await axios.post(`/api/doctor/doctor-login`, loginDetails);
-      console.log("login success", response.data);
-      router.push("/profile");
       try {
+        setloading(true);
+        const response = await axios.post(`/api/doctor/login`, loginDetails);
+        console.log("login success", response.data);
+        router.push("/profile");
 
       } catch (error) {
         console.log("error login:", error);

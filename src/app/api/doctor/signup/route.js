@@ -17,9 +17,7 @@ export async function POST(request) {
 
     const existingDoctor = await doctorModel.findOne({ email });
 
-    // const uploadResponse = await cloudinary.uploader.upload(image, {
-    //   folder: "user_images",
-    // });
+
 
     if (existingDoctor) {
       return NextResponse.json({ error: "Email is already registered" }, { status: 400 });

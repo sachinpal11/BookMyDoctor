@@ -12,7 +12,7 @@ function page() {
       </div>
       <div className='w-full sm:w-[60%] md:w-[40%] flex flex-col gap-2 items-center'>
         <Link href={'/doctor-register'} className='py-3 px-5 text-center text-xl text-white rounded-md w-[90%] bg-blue-700' >Register As Doctor</Link>
-        <Link href={'/search-doctor'} className='py-3 px-5 text-center text-xl text-white rounded-md w-[90%] bg-black' >Search Doctors</Link>
+        <Link href={'/bookappointment'} className='py-3 px-5 text-center text-xl text-white rounded-md w-[90%] bg-black' >Search Doctors</Link>
       </div>
     </div>
   )

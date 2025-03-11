@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${geistMono.variable} flex flex-col w-screen h-screen justify-center items-center antialiased`}
       >
         <Analytics />
         {children}

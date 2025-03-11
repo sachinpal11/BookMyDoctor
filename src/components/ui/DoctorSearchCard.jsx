@@ -14,7 +14,7 @@ function DoctorSearchCard({ name, image, degree, location }) {
         <p className='text-xl uppercase flex items-center'> {degree}</p>
         <span className='flex text-gray-600 items-center text-xl'> {location}</span>
       </div>
-      <Button className="h-full" >Book</Button>
+      <Button className="h-full py-10" >Book</Button>
     </div>
   )
 }

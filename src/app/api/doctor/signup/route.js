@@ -42,9 +42,6 @@ export async function POST(request) {
     const savedDoctor = await newDoctor.save();
 
 
-    console.log(savedDoctor);
-
-
     return NextResponse.json({ message: "Doctor registered successfully", success: true, savedDoctor }, { status: 201 });
 
   } catch (error) {

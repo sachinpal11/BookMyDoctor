@@ -11,8 +11,6 @@ export async function POST(request) {
 
     const { doctorName } = reqBody;
 
-
-    console.log(reqBody);
     if (!reqBody) {
       return NextResponse.json({ error: "Search value is required" }, { status: 400 });
     }

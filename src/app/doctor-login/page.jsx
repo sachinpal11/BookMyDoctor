@@ -36,7 +36,6 @@ function page() {
         setSuccess(true);
       }
     }
-    console.log(loginDetails);
   }
 
 

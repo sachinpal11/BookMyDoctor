@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import axios from 'axios'
 import { SearchIcon, SearchXIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 
 function page() {
@@ -12,17 +13,12 @@ function page() {
   const [searchVal, setSearchVal] = useState('');
   const searchRef = useRef(null);
   const [disable, setDisable] = useState(true);
+  const router = useRouter();
   const handleSearchForm = async (e) => {
     e.preventDefault();
-
-    try {
-      console.log(searchRef.current.value);
-      const response = await axios.post(`/api/doctor/search`, { doctorName: searchRef.current.value });
-      console.log("searching success", response.data.doctors);
-    } catch (error) {
-      console.log("error searching:", error);
+    if (!disable) {
+      router.push(`/doctor-search?name=${searchRef.current.value}`);
     }
-
   }
 
   useEffect(() => {

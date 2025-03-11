@@ -48,12 +48,11 @@ function page() {
     else {
       setDisabled(true);
     }
-    console.log(signUpDetails);
   }, [signUpDetails]);
 
   return (
     <div className='w-screen relative overflow-hidden h-screen flex justify-center items-center'>
-      <div className='w-screen overflow-x-hidden items-center flex flex-col gap-4'>
+      <div className='w-screen sm:w-[60%] md:w-[40%] overflow-x-hidden items-center flex flex-col gap-4'>
         <h1 className='text-3xl w-[90%] text-start font-semibold'>Signup</h1>
         {loading && <Loading />}
         {success && <RegisterSuccess value={"register"} />}

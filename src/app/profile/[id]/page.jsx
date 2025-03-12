@@ -41,7 +41,7 @@ function Page() {
         <Button onClick={LogOut}>Log Out</Button>
       </div>
       <div className="w-[90%] flex items-center justify-center h-auto py-5 flex-col gap-4 rounded-xl bg-gray-200 mt-5 ">
-        <div className="w-[180px] overflow-hidden h-[180px] bg-white rounded-full">
+        <div className="w-[150px] overflow-hidden h-[150px] bg-white rounded-full">
           <img src={data?.image || ""} className="w-full h-full object-cover" alt="Doctor Profile" />
         </div>
         <h1 className="text-2xl capitalize font-semibold">

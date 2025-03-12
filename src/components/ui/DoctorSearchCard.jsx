@@ -4,11 +4,10 @@ import { Button } from './button';
 
 function DoctorSearchCard({ firstName, lastName, image, degree, location }) {
 
-  const doctor_name = "sachin";
   return (
 
-    <div className='w-[95%] capitalize relative flex rounded-lg items-center gap-4 bg-gray-200 h-auto px-2 py-2 '>
-      <img src={image} className='w-[30%] h-full object-cover rounded-lg' alt="" />
+    <div className='w-[95%] capitalize relative flex rounded-lg items-center justify-between gap-4 bg-gray-200 h-auto px-2 py-2 '>
+      <img src={image} className='w-[100px] h-[100px] object-cover rounded-lg' alt="" />
       <div className='w-[60%] h-full items-center'>
         <h1 className='text-2xl font-semibold capitalize '>Dr. {firstName} {lastName}</h1>
         <p className='text-xl uppercase flex items-center'> {degree}</p>

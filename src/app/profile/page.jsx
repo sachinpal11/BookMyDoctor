@@ -21,7 +21,7 @@ function page() {
 
   }
   return (
-    <div className='w-full h-screen flex flex-col items-center justify-start'>
+    <div className='w-full sm:w-[60%] md:w-[40%] h-screen flex flex-col items-center justify-start'>
       <div className='w-full p-2 h-[10vh] justify-between bg-gray-300 flex items-center'>
         <Image src={Logo} className='w-[50px]' />
         <Button onClick={LogOut} >Log Out</Button>

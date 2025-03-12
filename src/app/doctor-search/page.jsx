@@ -32,7 +32,7 @@ function DoctorSearchComponent() {
     };
 
     fetchDoctors();
-    const interval = setInterval(fetchDoctors, 2000);
+    const interval = setInterval(fetchDoctors, 1000);
 
     return () => clearInterval(interval);
   }, [name]);

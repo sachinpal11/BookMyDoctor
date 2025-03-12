@@ -6,6 +6,7 @@ import Loading from '@/components/ui/Loading';
 import RegisterSuccess from '@/components/ui/RegisterSuccess';
 import axios from 'axios';
 import { CldUploadWidget } from 'next-cloudinary';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
@@ -65,7 +66,7 @@ function page() {
         <h1 className='text-3xl w-[90%] text-start font-semibold'>Signup</h1>
         {loading && <Loading />}
         {success && <RegisterSuccess value={"register"} />}
-        <form action="" onSubmit={handleSignUp} className='w-[90%] flex flex-col gap-4'>
+        <form action="" onSubmit={handleSignUp} className='w-[90%] justify-center flex flex-col gap-2'>
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => handleName(e)} placeholder={'Enter Name'} />
           <CldUploadWidget uploadPreset='book-my-doctor-api-sachin' onSuccess={({ event, info }) => {
             if (event === 'success') {
@@ -92,6 +93,7 @@ function page() {
 
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setSignUpDetails({ ...signUpDetails, password: e.target.value })} placeholder={'Set Password'} type="password" />
           <Button variant={"register"} size={"lg"} type={"submit"} >{disabled ? "Fill All Details" : "Sign Up"}</Button>
+          <Link href={'/doctor-login'} className='font-semibold w-full text-center' >Logged In ? Go to LogIn</Link>
         </form>
       </div>
     </div>

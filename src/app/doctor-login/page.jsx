@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input'
 import Loading from '@/components/ui/Loading';
 import RegisterSuccess from '@/components/ui/RegisterSuccess';
 import axios from 'axios';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Router } from 'next/router';
 import React, { useEffect, useState } from 'react'
@@ -24,11 +25,14 @@ function page() {
       try {
         setloading(true);
         const response = await axios.post(`/api/doctor/login`, loginDetails);
-        console.log(response.data.error);
-        if (response.data.error === "Email is not registered") {
+        console.log(response.data);
+        if (!response.data.success) {
           setloadingVal('Not Login')
+        } else {
+          const res = await axios.get('/api/doctor/me');
+          router.push(`/profile/${res.data.data._id}`)
         }
-        router.push("/profile");
+        // router.push('/profile');
       } catch (error) {
         console.log("error login:", error);
         setloading(false);
@@ -59,6 +63,7 @@ function page() {
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setLoginDetails({ ...loginDetails, password: e.target.value })} type={"password"} placeholder={'Enter Password'} />
           <Button size={"lg"} type={"submit"} >{disabled ? "Fill Details" : "Login"}</Button>
         </form>
+        <Link href={'/doctor-signup'} className='font-semibold' >Not Logged In ? Go to Signup</Link>
       </div>
     </div>
   )

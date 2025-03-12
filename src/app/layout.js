@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { icons } from "lucide-react";
 import { Analytics } from "@vercel/analytics/react"
@@ -16,6 +16,11 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter", // Define CSS variable
 });
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: "--font-poppins",
+  weight: ['400', '700'],
+})
 
 export const metadata = {
   title: "Book My Doctor",
@@ -26,7 +31,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${geistMono.variable} flex flex-col w-screen h-screen justify-center items-center antialiased`}
+        className={`${poppins.variable} ${geistMono.variable} flex flex-col w-screen h-screen justify-center items-center antialiased`}
       >
         <Analytics />
         {children}

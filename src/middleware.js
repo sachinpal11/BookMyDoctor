@@ -5,7 +5,7 @@ export function middleware(request) {
 
   const path = request.nextUrl.pathname;
 
-  const isPublicPath = path === '/doctor-login' || path === '/doctor-signup';
+  const isPublicPath = path === '/doctor-login' || path === '/doctor-signup' || path === '/bookappointment' || path === '/doctor-search' || path === '/' || path === '/doctor-register';
 
   const token = request.cookies.get('token')?.value || ''
   console.log("token", token);

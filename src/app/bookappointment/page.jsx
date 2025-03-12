@@ -18,7 +18,7 @@ function page() {
     e.preventDefault();
     if (!disable) {
       const name = searchRef.current.value;
-      router.push(`/doctor-search?name=${searchRef.current.value}`);
+      router.push(`/doctor-search?name=${searchRef.current.value.toLowerCase()}`);
     }
   }
 
@@ -37,7 +37,7 @@ function page() {
       <form action="" onSubmit={handleSearchForm} className='w-[90%] gap-4 items-center h-auto flex flex-col mt-5'>
         <div className='bg-neutral-200 rounded-sm w-full py-1 flex items-center px-4'>
           <SearchIcon className='text-gray-500' />
-          <input ref={searchRef} onChange={(e) => setSearchVal(e.target.value)} type="text" className={'w-full text-xl outline-none py-2 px-4 bg-gray-200'} placeholder='Search your Doctor' />
+          <input ref={searchRef} onChange={(e) => setSearchVal(e.target.value.toLowerCase())} type="text" className={'w-full text-xl outline-none py-2 px-4 bg-gray-200'} placeholder='Search your Doctor' />
         </div>
         <Button className={'w-full font-normal text-xl'} type={'submit'} size={'lg'} >{disable ? "Enter Doctor Name" : "Search"}</Button>
       </form>

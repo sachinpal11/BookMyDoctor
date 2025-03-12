@@ -54,9 +54,9 @@ function page() {
   const handleName = (e) => {
     const name = e.target.value.split(' ');
     if (name.length > 1) {
-      setSignUpDetails({ ...signUpDetails, firstName: name[0], lastName: name[1] });
+      setSignUpDetails({ ...signUpDetails, firstName: name[0].toLowerCase(), lastName: name[1].toLowerCase() });
     } else {
-      setSignUpDetails({ ...signUpDetails, firstName: name[0] });
+      setSignUpDetails({ ...signUpDetails, firstName: name[0].toLowerCase() });
     }
   }
   return (

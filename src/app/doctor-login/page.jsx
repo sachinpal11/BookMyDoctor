@@ -55,7 +55,7 @@ function page() {
         {success && <RegisterSuccess value={loadingVal} />}
         {loading && <Loading />}
         <form action="" onSubmit={handleLogin} className='w-[90%] flex flex-col gap-4'>
-          <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setLoginDetails({ ...loginDetails, email: e.target.value })} placeholder={'Enter Email ID'} />
+          <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setLoginDetails({ ...loginDetails, email: e.target.value.toLowerCase() })} placeholder={'Enter Email ID'} />
           <Input className={'bg-gray-200 w-full py-6 px-4 text-lg'} onChange={(e) => setLoginDetails({ ...loginDetails, password: e.target.value })} type={"password"} placeholder={'Enter Password'} />
           <Button size={"lg"} type={"submit"} >{disabled ? "Fill Details" : "Login"}</Button>
         </form>

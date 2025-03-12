@@ -6,18 +6,17 @@ const doctorScheduleSchema = new mongoose.Schema({
     ref: 'Doctor',
     required: true
   },
-  shifts: [
-    {
-      startTime: { type: String, required: true }, // e.g., "09:00 AM"
-      endTime: { type: String, required: true }, // e.g., "12:00 PM"
+  shifts: {
+    morning: {
+      startTime: { type: String, required: true, default: "" }, // e.g., "09:00 AM"
+      endTime: { type: String, required: true, default: "" }, // e.g., "12:00 PM"
+    },
+    evening: {
+      startTime: { type: String, required: true, default: "" }, // e.g., "09:00 AM"
+      endTime: { type: String, required: true, default: "" }, // e.g., "12:00 PM"
     }
-  ],
-  status: {
-    type: String,
-    required: true,
-    enum: ['Available', 'Unavailable'],
-    default: 'Available'
   },
+
   createdAt: {
     type: Date,
     default: Date.now

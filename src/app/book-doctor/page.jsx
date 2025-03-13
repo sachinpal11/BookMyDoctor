@@ -3,7 +3,7 @@
 import DoctorBookSchedule from '@/components/ui/DoctorBookSchedule';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 
 function BookDoctorComponent() {
   const searchParams = useSearchParams();

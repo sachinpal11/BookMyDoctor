@@ -76,7 +76,7 @@ function Page() {
 
     // try { }
     try {
-      const response = await axios.post('/api/schedule/doctor-schedule', { shifts });
+      const response = await axios.post('/api/schedule/doctor-schedule', { shifts: tempSchedule });
       console.log("API Response:", response.data);
       setOpen(false);
     } catch (error) {

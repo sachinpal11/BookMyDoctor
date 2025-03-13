@@ -25,7 +25,7 @@ function BookDoctorComponent() {
         const doctorRes = await axios.post("/api/patient/get-doctor", { id });
         setData(doctorRes.data.doctorData); // Store the whole object
       } catch (error) {
-        console.error("Error fetching doctor details", error);
+        // console.error("Error fetching doctor details", error);
       }
     };
     const getDoctorSchedule = async () => {
@@ -34,7 +34,7 @@ function BookDoctorComponent() {
 
         setShifts(scheduleRes.data.scheduleData.shifts); // Store the whole object
       } catch (error) {
-        console.error("Error fetching doctor details", error);
+        // console.error("Error fetching doctor details", error);
       }
     };
 

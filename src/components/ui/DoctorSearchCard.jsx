@@ -10,7 +10,6 @@ function DoctorSearchCard({ firstName, id, lastName, image, degree, location }) 
 
   const changeRoute = (id) => {
     router.push(`/book-doctor/?book=${id}`);
-    console.log("route changed", id);
   }
   return (
 

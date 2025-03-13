@@ -76,7 +76,7 @@ function Page() {
 
     // try { }
     try {
-      const response = await axios.post('/api/schedule/doctor-schedule', { doctorId, shifts });
+      const response = await axios.post('/api/schedule/doctor-schedule', { shifts });
       console.log("API Response:", response.data);
       setOpen(false);
     } catch (error) {

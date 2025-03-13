@@ -1,4 +1,5 @@
 import connectDB from "@/dbConfig/dbConfig";
+import { getDataFromToken } from "@/helpers/getDataFromToken";
 import doctorSchedule from "@/models/doctorSchedule";
 import { NextResponse } from "next/server";
 
@@ -9,7 +10,8 @@ export async function POST(request) {
   try {
 
     const reqBody = await request.json();
-    const { doctorId, shifts } = reqBody;
+    const doctorId = await getDataFromToken(request);
+    const { shifts } = reqBody;
     console.log(doctorId, shifts);
     const schedule = await doctorSchedule.create({ doctorId, shifts });
     return NextResponse.json({

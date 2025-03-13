@@ -45,7 +45,7 @@ function BookDoctorComponent() {
 
 
   return (
-    <div className='w-full flex flex-col items-center justify-start'>
+    <div className='w-full sm:w-[60%] md:w-[40%] flex flex-col items-center justify-start'>
 
       <div className="w-[90%] flex items-center justify-center h-auto py-5 flex-col gap-2 rounded-xl bg-gray-100 mt-5 ">
         <div className="w-[150px] overflow-hidden h-[150px] bg-white rounded-full">

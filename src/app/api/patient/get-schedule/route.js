@@ -14,9 +14,9 @@ export async function POST(request) {
     const reqBody = await request.json();
 
     const { id } = reqBody;
-    console.log(id);
+
     const scheduleData = await doctorSchedule.findOne({ doctorId: id });
-    console.log(scheduleData);
+
     return NextResponse.json({
       message: "doctor schedule data",
       scheduleData: scheduleData,

@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
-function page() {
+function BookDoctorComponent() {
   const searchParams = useSearchParams();
   const [id, setId] = useState("");
   const [data, setData] = useState(null);
@@ -71,4 +71,14 @@ function page() {
   )
 }
 
-export default page
+
+
+
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BookDoctorComponent />
+    </Suspense>
+  );
+}

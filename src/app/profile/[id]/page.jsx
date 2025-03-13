@@ -65,8 +65,8 @@ function Page() {
     }));
   };
 
+
   const updateSchedule = async () => {
-    setShifts(tempSchedule);
     setId(id);
     setOpen(false);
     console.log("Sending Data:", {

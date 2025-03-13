@@ -55,7 +55,6 @@ function Page() {
 
     getDoctorDetails();
     getDoctorSchedule();
-
   }, []);
 
   const handleChange = (shift, field, value) => {
@@ -78,6 +77,7 @@ function Page() {
     try {
       const response = await axios.post('/api/schedule/doctor-schedule', { shifts: tempSchedule });
       console.log("API Response:", response.data);
+      window.location.reload();
       setOpen(false);
     } catch (error) {
       console.error("Failed to update schedule", error);

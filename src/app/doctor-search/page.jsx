@@ -3,7 +3,7 @@
 import DoctorSearchCard from "@/components/ui/DoctorSearchCard";
 import Loading from "@/components/ui/Loading";
 import axios from "axios";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 function DoctorSearchComponent() {
@@ -37,6 +37,9 @@ function DoctorSearchComponent() {
     return () => clearInterval(interval);
   }, [name]);
 
+
+
+
   return (
     <div className="flex sm:w-[60%] md:w-[40%] w-full flex-col items-center h-full justify-start">
       <h1 className="mt-5 text-2xl font-semibold w-[90%] text-start mb-5">Your Searched: {name}</h1>
@@ -49,6 +52,7 @@ function DoctorSearchComponent() {
               firstName={doctor.firstName}
               lastName={doctor.lastName}
               image={doctor.image}
+              id={doctor._id}
               degree={doctor.degree}
               location={doctor.location}
             />

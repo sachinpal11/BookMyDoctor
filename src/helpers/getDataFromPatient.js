@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 export const getDataFromToken = (request) => {
   try {
 
-    const token = request.cookies.get("doctortoken")?.value || '';
+    const token = request.cookies.get("patienttoken")?.value || '';
 
     const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
 

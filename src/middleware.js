@@ -1,29 +1,53 @@
-import { NextResponse } from 'next/server'
-import jwt from "jsonwebtoken";
-
+import { NextResponse } from 'next/server';
 
 export function middleware(request) {
   const path = request.nextUrl.pathname;
-  const isPublicPath = path === '/doctor-login' || path === '/doctor-signup' || path === '/bookappointment' || path === '/doctor-search' || path === '/' || path === '/doctor-register';
-  const token = request.cookies.get('token')?.value || '';
-  if (isPublicPath && token) {
-    return NextResponse.redirect(new URL(`/profile/my-profile`, request.nextUrl))
+
+  const isPublicPath = [
+    '/book-doctor',
+    '/doctor-login',
+    '/doctor-signup',
+    '/bookappointment',
+    '/doctor-search',
+    '/',
+    '/doctor-register'
+  ].includes(path);
+
+  const doctortoken = request.cookies.get('doctortoken')?.value || '';
+  const patienttoken = request.cookies.get('patienttoken')?.value || '';
+
+  console.log("Path:", path);
+  console.log("Doctor Token:", doctortoken);
+  console.log("Patient Token:", patienttoken);
+
+  if (doctortoken && path === '/doctor-login') {
+    console.log("Redirecting doctor to profile");
+    return NextResponse.redirect(new URL('/profile/my-profile', request.nextUrl));
   }
 
-  if (!isPublicPath && !token) {
-    return NextResponse.redirect(new URL('/doctor-login', request.nextUrl))
+  if (patienttoken && path === '/bookappointment') {
+    console.log("Redirecting patient to appointment");
+    return NextResponse.redirect(new URL('/patient-appointment', request.nextUrl));
   }
+
+  if (!isPublicPath && !doctortoken && !patienttoken) {
+    console.log("Unauthorized access. Redirecting to login");
+    return NextResponse.redirect(new URL('/', request.nextUrl));
+  }
+
+  return NextResponse.next();
 }
-
 
 export const config = {
   matcher: [
     '/',
-    '/profile',
+    '/profile/:path*',
+    '/book-doctor',
     '/bookappointment',
     '/doctor-login',
     '/doctor-signup',
     '/doctor-register',
-    '/doctor-search'
+    '/doctor-search',
+    '/patient-appointment'
   ],
-}
+};

@@ -7,7 +7,9 @@ import { useRouter } from 'next/navigation';
 function DoctorSearchCard({ firstName, id, lastName, image, degree, location }) {
 
   const router = useRouter();
-
+  useEffect(() => {
+    console.log(id);
+  }, [])
   const changeRoute = (id) => {
     router.push(`/book-doctor/?book=${id}`);
   }

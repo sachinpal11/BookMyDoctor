@@ -45,7 +45,7 @@ export async function POST(request) {
       success: true,
     })
 
-    response.cookies.set("token", token, {
+    response.cookies.set("doctortoken", token, {
       httpOnly: true,
       maxAge: 60 * 60 * 24,
     })

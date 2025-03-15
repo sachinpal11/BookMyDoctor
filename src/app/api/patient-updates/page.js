@@ -1,6 +1,7 @@
 
 import connectDB from "@/dbConfig/dbConfig";
-import Patient from "@/models/patientModel";
+import patient from "@/models/patient";
+
 
 export async function GET(req) {
   await connectDB();
@@ -9,7 +10,7 @@ export async function GET(req) {
     new ReadableStream({
       async start(controller) {
         const sendUpdates = async () => {
-          const patients = await Patient.find().sort({ createdAt: 1 });
+          const patients = await patient.find().sort({ createdAt: 1 });
           controller.enqueue(`data: ${JSON.stringify(patients)}\n\n`);
         };
 

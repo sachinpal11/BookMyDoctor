@@ -20,20 +20,16 @@ export function middleware(request) {
   console.log("Doctor Token:", doctortoken);
   console.log("Patient Token:", patienttoken);
 
-  if (doctortoken && path === '/doctor-login') {
-    console.log("Redirecting doctor to profile");
+  if (doctortoken && isPublicPath) {
     return NextResponse.redirect(new URL('/profile/my-profile', request.nextUrl));
   }
-
-  if (patienttoken && path === '/bookappointment') {
-    console.log("Redirecting patient to appointment");
+  if (!doctortoken && !isPublicPath) {
+    return NextResponse.redirect(new URL('/', request.nextUrl));
+  }
+  if (patienttoken && isPublicPath) {
     return NextResponse.redirect(new URL('/patient-appointment', request.nextUrl));
   }
 
-  if (!isPublicPath && !doctortoken && !patienttoken) {
-    console.log("Unauthorized access. Redirecting to login");
-    return NextResponse.redirect(new URL('/', request.nextUrl));
-  }
 
   return NextResponse.next();
 }
@@ -48,6 +44,7 @@ export const config = {
     '/doctor-signup',
     '/doctor-register',
     '/doctor-search',
-    '/patient-appointment'
+    '/patient-appointment',
+    '/patient-management'
   ],
 };

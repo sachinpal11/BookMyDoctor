@@ -22,8 +22,12 @@ const patientSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  appointed: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
   createdAt: { type: Date, default: Date.now, expires: 86400 }
-
 });
 
 module.exports = mongoose.models.patient || mongoose.model('patient', patientSchema);

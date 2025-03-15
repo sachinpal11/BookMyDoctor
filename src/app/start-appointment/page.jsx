@@ -1,13 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Page() {
   const [morningPatients, setMorningPatients] = useState([]);
   const [eveningPatients, setEveningPatients] = useState([]);
-  const router = useRouter();
+
   useEffect(() => {
     const fetchPatients = async () => {
       try {
@@ -30,7 +29,7 @@ export default function Page() {
       });
 
       if (res.status === 200) {
-        alert("Appointment updated successfully!");
+        window.location.reload();
       }
     } catch (error) {
       console.error("Error updating appointment:", error);
@@ -38,7 +37,7 @@ export default function Page() {
   };
 
   return (
-    <div className="w-full overflow-x-hidden sm:w-[60%] md:w-[40%] scrollbar-hide min-h-screen p-5 flex flex-col items-center">
+    <div className="w-full min-h-screen p-5 flex flex-col items-center">
       <h1 className="text-3xl font-bold mb-5">Today's Patients</h1>
 
       {/* Morning Shift Patients */}
@@ -60,7 +59,6 @@ export default function Page() {
           <p className="text-lg text-gray-500">No evening shift patients.</p>
         )}
       </div>
-      <Button className={'w-[90%] mt-5'} variant={'register'} onClick={() => router.push('/start-appointment')} size={'lg'} >Start Appointment</Button>
     </div>
   );
 }
@@ -68,12 +66,12 @@ export default function Page() {
 // Reusable Patient Table Component
 function PatientTable({ patients, updateAppointment }) {
   return (
-    <div className="w-full h-auto flex items-center flex-col gap-2">
-      {patients.map((patient, index) => (
-        <div key={patient._id} className="w-[95%] font-semibold justify-between flex rounded-xl h-auto bg-gray-200 py-5 px-5">
+    <div className="w-full h-auto flex items-center justify-center flex-col gap-2">
+      {patients.map((patient, index) => !patient.appointed && (
+        <div key={patient._id} className="w-[95%] font-semibold justify-between flex items-center pl-5 rounded-xl h-auto py-1 bg-gray-200 px-1">
           <span className="text-2xl font-bold">{index + 1}</span>
           <span className="text-xl capitalize">{patient.name}</span>
-          <span className="capitalize">Age: {patient.age}</span>
+          {<Button className={''} size={'lg'} onClick={() => updateAppointment(patient._id)} >Present</Button>}
         </div>
       ))}
     </div>

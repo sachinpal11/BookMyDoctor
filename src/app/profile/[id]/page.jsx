@@ -84,6 +84,9 @@ function Page() {
     }
   };
 
+  const patientManageRoute = () => {
+    router.push('/patient-management');
+  }
   return (
     <div className="w-full relative sm:w-[60%] md:w-[40%] h-screen flex flex-col items-center justify-start">
       <div className="w-full p-2 h-[10vh] justify-between bg-gray-100 flex items-center">
@@ -109,7 +112,7 @@ function Page() {
         <p className="text-xl font-semibold">No Appointment Timing</p>
       )}
       {shifts.morning.startTime === "" && <Button onClick={() => setOpen(true)} size={'lg'} className={'w-[90%] mt-5'} > Update Timing </Button>}
-      <Button size={'lg'} className={'w-[90%] mt-5'} > Patient Management </Button>
+      <Button size={'lg'} className={'w-[90%] mt-5'} onClick={patientManageRoute} > Patient Management </Button>
       {isOpen && <div className="w-full flex flex-col items-center justify-between h-screen fixed bg-white">
         <Minimize2 className="text-2xl fixed top-5 right-5" onClick={() => { setOpen(false) }} />
         <div className="w-[90%] h-full flex flex-col items-center justify-center gap-3">

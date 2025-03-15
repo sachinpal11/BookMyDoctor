@@ -1,5 +1,5 @@
 
-import connectDB from "@/utils/connectDB";
+import connectDB from "@/dbConfig/dbConfig";
 import Patient from "@/models/patient";
 
 export async function GET(req) {

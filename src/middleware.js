@@ -20,16 +20,20 @@ export function middleware(request) {
   console.log("Doctor Token:", doctortoken);
   console.log("Patient Token:", patienttoken);
 
-  if (doctortoken && isPublicPath) {
+  // Redirect doctors to profile, but not if they are already there
+  if (doctortoken && isPublicPath && path !== '/profile/my-profile') {
     return NextResponse.redirect(new URL('/profile/my-profile', request.nextUrl));
   }
-  if (!doctortoken && !isPublicPath) {
-    return NextResponse.redirect(new URL('/', request.nextUrl));
-  }
-  if (patienttoken && isPublicPath) {
+
+  // Redirect patients to appointment, but not if they are already there
+  if (patienttoken && isPublicPath && path !== '/patient-appointment') {
     return NextResponse.redirect(new URL('/patient-appointment', request.nextUrl));
   }
 
+  // Prevent unauthenticated users from accessing private paths
+  if (!isPublicPath && !doctortoken && !patienttoken) {
+    return NextResponse.redirect(new URL('/', request.nextUrl));
+  }
 
   return NextResponse.next();
 }

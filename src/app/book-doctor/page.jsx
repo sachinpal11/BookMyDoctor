@@ -16,6 +16,7 @@ function BookDoctorComponent() {
   const [isLoading, setLoading] = useState(true);
   const [shift, setShift] = useState(null)
   const router = useRouter();
+  const [endTime, setendTime] = useState("");
   const [shifts, setShifts] = useState({
     morning: { startTime: "", endTime: "" },
     evening: { startTime: "", endTime: "" },
@@ -81,8 +82,8 @@ function BookDoctorComponent() {
       {((shifts.morning.startTime || shifts.evening.startTime) && !isBookOpen) && (
         <>
           <span className='mt-10 w-[90%] font-semibold text-2xl' >Today</span>
-          <DoctorBookSchedule shifts={[shifts.morning]} setShift={setShift} setBookOpen={setBookOpen} shift={'morning'} />
-          <DoctorBookSchedule shifts={[shifts.evening]} setShift={setShift} setBookOpen={setBookOpen} shift={'evening'} />
+          <DoctorBookSchedule shifts={[shifts.morning]} setendTime={setendTime} setShift={setShift} setBookOpen={setBookOpen} shift={'morning'} />
+          <DoctorBookSchedule shifts={[shifts.evening]} setendTime={setendTime} setShift={setShift} setBookOpen={setBookOpen} shift={'evening'} />
         </>
       )
       }

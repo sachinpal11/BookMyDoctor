@@ -48,6 +48,7 @@ export const config = {
     '/doctor-signup',
     '/doctor-register',
     '/doctor-search',
+    '/start-appointment',
     '/patient-appointment',
     '/patient-management'
   ],

@@ -4,12 +4,13 @@ import Link from 'next/link'
 import React, { useEffect } from 'react'
 import { Button } from './button'
 
-function ScheduleTime({ shifts, shift, setBookOpen, setShift }) {
+function ScheduleTime({ shifts, shift, setBookOpen, setShift, setendTime }) {
 
 
   const handleChange = () => {
     setShift(shift);
     setBookOpen(true);
+    setendTime(shifts[0].endTime);
   }
 
   return (

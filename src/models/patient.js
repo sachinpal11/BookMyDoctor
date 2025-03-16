@@ -6,6 +6,10 @@ const patientSchema = new mongoose.Schema({
     ref: 'Doctor',
     required: true
   },
+  patientNo: {
+    type: Number,
+    required: true
+  },
   name: {
     type: String,
     required: true,
@@ -27,6 +31,7 @@ const patientSchema = new mongoose.Schema({
     default: false,
     required: true
   },
+
   createdAt: { type: Date, default: Date.now, expires: 86400 }
 });
 

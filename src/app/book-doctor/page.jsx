@@ -54,14 +54,17 @@ function BookDoctorComponent() {
 
   const handleForm = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const res = await axios.post('/api/patient/get-appointment', { doctorId: id, name: e.target[0].value, age: e.target[1].value, mobile: e.target[2].value, shift: shift })
       console.log(res.data);
       if (res.data.success) {
+        setLoading(false);
         router.push(`/patient-appointment/`);
       }
     } catch (err) {
+      setLoading(false);
+      alert("try again");
       console.log("appointment error:", err);
     }
   }

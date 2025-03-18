@@ -40,6 +40,7 @@ export async function POST(request) {
     const tokenData = {
       id: newpatient._id,
       name: newpatient.name,
+      doctorId: newpatient.doctorId,
       mobile: newpatient.mobile,
       age: newpatient.age,
       patientNo: newpatient.patientNo

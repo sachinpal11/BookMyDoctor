@@ -10,12 +10,12 @@ connectDB();
 export async function GET(request) {
   try {
 
-    const patientNo = getDataFromPatient(request);
+    const patientData = getDataFromPatient(request);
 
     return NextResponse.json(
       {
         message: "Patient No is here",
-        patientNo
+        patientNo: patientData.patientNo
       }
     )
   } catch (error) {

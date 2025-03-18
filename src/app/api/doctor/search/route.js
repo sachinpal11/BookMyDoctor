@@ -14,14 +14,17 @@ export async function POST(request) {
     }
 
     const doctors = await doctorModel
-      .find({ firstName: new RegExp(`^${doctorName}`, "i") }, "-password -__v")
+      .find(
+        { firstName: new RegExp(`^${doctorName}`, "i") },
+        "image firstName lastName location degree"
+      )
       .limit(10)
       .lean();
 
     return NextResponse.json({ success: true, doctors }, { status: 200 });
 
   } catch (err) {
-    console.error("Error searching doctor:", err.message);
+    console.error("Error searching doctor:", err);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

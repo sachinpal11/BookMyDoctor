@@ -13,9 +13,10 @@ export async function POST(request) {
       return NextResponse.json({ error: "Search value is required" }, { status: 400 });
     }
 
-    const doctors = await doctorModel.find({
-      firstName: { $regex: doctorName, $options: "i" } // Case-insensitive search
-    });
+    const doctors = await doctorModel
+      .find({ firstName: new RegExp(`^${doctorName}`, "i") }, "-password -__v")
+      .limit(10)
+      .lean();
 
     return NextResponse.json({ success: true, doctors }, { status: 200 });
 

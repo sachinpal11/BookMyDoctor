@@ -6,11 +6,14 @@ import patient from "@/models/patient";
 export async function GET(req) {
   await connectDB();
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Set time to start of the day
+
   return new Response(
     new ReadableStream({
       async start(controller) {
         const sendUpdates = async () => {
-          const patients = await patient.find().sort({ createdAt: 1 });
+          const patients = await patient.find({ createdAt: { $gte: today } }).sort({ createdAt: 1 });
           controller.enqueue(`data: ${JSON.stringify(patients)}\n\n`);
         };
 

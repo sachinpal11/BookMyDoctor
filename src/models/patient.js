@@ -32,7 +32,7 @@ const patientSchema = new mongoose.Schema({
     required: true
   },
 
-  createdAt: { type: Date, default: Date.now, expires: 86400 }
+  createdAt: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.models.patient || mongoose.model('patient', patientSchema);
